@@ -1,75 +1,527 @@
-<header>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
+<header class="header">
+  <div class="header__inner">
+    {%- comment -%} Logo {%- endcomment -%}
+    <div class="header__logo">
+      <a href="{{ routes.root_url }}">
+        {%- if section.settings.logo != blank -%}
+          <img
+            src="{{ section.settings.logo | image_url: width: 200 }}"
+            alt="Willmek Auto Parts"
+            width="{{ section.settings.logo_width }}"
+            height="auto"
+            loading="eager"
+          >
+        {%- else -%}
+          <span class="header__logo-text">Willmek Auto Parts</span>
+        {%- endif -%}
+      </a>
+    </div>
 
-  <div class="header__menu">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
+    {%- comment -%} Navigation Menu with Dropdowns {%- endcomment -%}
+    <nav class="header__nav">
+      <ul class="header__menu">
+        <li class="header__menu-item header__menu-item--has-dropdown">
+          <a href="/pages/mini-parts">Mini Parts</a>
+          <ul class="header__dropdown">
+            <li><a href="/collections/classic-mini">Classic Mini (1959-2000)</a></li>
+            <li class="header__dropdown-item--has-submenu">
+              <a href="/collections/gen-1">Gen 1 (2002-2006)</a>
+              <ul class="header__submenu">
+                <li><a href="/collections/r50">R50 One/Cooper</a></li>
+                <li><a href="/collections/r53">R53 Cooper S</a></li>
+                <li><a href="/collections/r52">R52 Convertible</a></li>
+                <li><a href="/collections/r52-s">R52 Convertible S</a></li>
+                <li><a href="/collections/r53-gp">R53 GP</a></li>
+              </ul>
+            </li>
+            <li class="header__dropdown-item--has-submenu">
+              <a href="/collections/gen-2">Gen 2 (2007-2013)</a>
+              <ul class="header__submenu">
+                <li><a href="/collections/r55">R55 Clubman</a></li>
+                <li><a href="/collections/r55-s">R55 Clubman S</a></li>
+                <li><a href="/collections/r56">R56 Hardtop</a></li>
+                <li><a href="/collections/r56-s">R56 Hardtop S/JCW</a></li>
+                <li><a href="/collections/r56-gp">R56 GP</a></li>
+                <li><a href="/collections/r57">R57 Convertible</a></li>
+                <li><a href="/collections/r57-s">R57 Convertible S</a></li>
+                <li><a href="/collections/r58">R58 Coupe</a></li>
+                <li><a href="/collections/r58-s">R58 Coupe S/JCW</a></li>
+                <li><a href="/collections/r59">R59 Roadster</a></li>
+                <li><a href="/collections/r59-s">R59 Roadster S/JCW</a></li>
+                <li><a href="/collections/r60">R60 Countryman</a></li>
+                <li><a href="/collections/r60-s">R60 Countryman S</a></li>
+                <li><a href="/collections/r61">R61 Paceman</a></li>
+                <li><a href="/collections/r61-s">R61 Paceman S</a></li>
+              </ul>
+            </li>
+            <li class="header__dropdown-item--has-submenu">
+              <a href="/collections/gen-3">Gen 3 (2014-Present)</a>
+              <ul class="header__submenu">
+                <li><a href="/collections/f54">F54 Clubman</a></li>
+                <li><a href="/collections/f54-s">F54 Clubman S/JCW</a></li>
+                <li><a href="/collections/f55">F55 Hardtop 4-Door</a></li>
+                <li><a href="/collections/f55-s">F55 Hardtop 4-Door S</a></li>
+                <li><a href="/collections/f56">F56 Hardtop 2-Door</a></li>
+                <li><a href="/collections/f56-s">F56 Hardtop 2-Door S/JCW</a></li>
+                <li><a href="/collections/f56-gp">F56 GP3</a></li>
+                <li><a href="/collections/f57">F57 Convertible</a></li>
+                <li><a href="/collections/f57-s">F57 Convertible S/JCW</a></li>
+                <li><a href="/collections/f60">F60 Countryman</a></li>
+                <li><a href="/collections/f60-s">F60 Countryman S/JCW</a></li>
+              </ul>
+            </li>
+            <li><a href="/collections/mini-parts">Shop All Mini Parts</a></li>
+          </ul>
+        </li>
+        <li class="header__menu-item header__menu-item--has-dropdown">
+          <a href="/collections/performance-parts">Performance Parts</a>
+          <ul class="header__dropdown">
+            <li><a href="/collections/exhaust">Exhaust</a></li>
+            <li><a href="/collections/intake">Intake</a></li>
+            <li><a href="/collections/suspension">Suspension</a></li>
+            <li><a href="/collections/brakes">Brakes</a></li>
+            <li><a href="/collections/tuning">Tuning</a></li>
+            <li><a href="/collections/performance-parts">Shop All Performance</a></li>
+          </ul>
+        </li>
+        <li class="header__menu-item header__menu-item--has-dropdown">
+          <a href="/collections/apparel-and-merch">Apparel & Merch</a>
+          <ul class="header__dropdown">
+            <li><a href="/collections/shirts">Shirts</a></li>
+            <li><a href="/collections/hats">Hats</a></li>
+            <li><a href="/collections/accessories">Accessories</a></li>
+            <li><a href="/collections/apparel-and-merch">Shop All Merch</a></li>
+          </ul>
+        </li>
+        <li class="header__menu-item">
+          <a href="/blogs/news">Blog</a>
+        </li>
+        <li class="header__menu-item header__menu-item--has-dropdown">
+          <a href="/pages/policies">Store Policies</a>
+          <ul class="header__dropdown">
+            <li><a href="/pages/policies#shipping-policy">Shipping Policy</a></li>
+            <li><a href="/pages/policies#refund-policy">Refund Policy</a></li>
+            <li><a href="/pages/policies#privacy-policy">Privacy Policy</a></li>
+            <li><a href="/pages/policies#terms-of-service">Terms of Service</a></li>
+          </ul>
+        </li>
+        <li class="header__menu-item">
+          <a href="/pages/contact">Contact</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="/pages/vin-decoder">VIN Decoder</a>
+        </li>
+      </ul>
+    </nav>
 
-  <div class="header__icons">
-    {% if shop.customer_accounts_enabled %}
-      <shopify-account menu="{{ section.settings.customer_account_menu }}">
-        {{ 'icon-account.svg' | inline_asset_content }}
-      </shopify-account>
-    {% endif %}
+    {%- comment -%} Header Icons: Currency, Search, Account, Cart {%- endcomment -%}
+    <div class="header__icons">
+      {%- comment -%} Theme Toggle {%- endcomment -%}
+      <button class="header__theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="header__theme-icon header__theme-icon--sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="header__theme-icon header__theme-icon--moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
 
-    <a href="{{ routes.cart_url }}">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
+      {%- comment -%} Currency Selector {%- endcomment -%}
+      {%- if localization.available_countries.size > 1 -%}
+        <div class="header__currency">
+          {%- form 'localization', class: 'header__currency-form' -%}
+            <select name="country_code" onchange="this.form.submit()">
+              {%- for country in localization.available_countries -%}
+                <option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>
+                  {{ country.currency.iso_code }} {{ country.currency.symbol }}
+                </option>
+              {%- endfor -%}
+            </select>
+          {%- endform -%}
+        </div>
+      {%- else -%}
+        <span class="header__currency-display">{{ cart.currency.iso_code }}</span>
+      {%- endif -%}
+
+      {%- comment -%} Search {%- endcomment -%}
+      <a href="{{ routes.search_url }}" class="header__icon header__search" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+      </a>
+
+      {%- comment -%} Account {%- endcomment -%}
+      {% if shop.customer_accounts_enabled %}
+        <shopify-account menu="{{ section.settings.customer_account_menu }}">
+          <a href="{{ routes.account_url }}" class="header__icon header__account" aria-label="Account">
+            {{ 'icon-account.svg' | inline_asset_content }}
+          </a>
+        </shopify-account>
       {% endif %}
 
-      {{ 'icon-cart.svg' | inline_asset_content }}
-    </a>
+      {%- comment -%} Cart {%- endcomment -%}
+      <a href="{{ routes.cart_url }}" class="header__icon header__cart" aria-label="Cart">
+        <span class="header__cart-icon">
+          {{ 'icon-cart.svg' | inline_asset_content }}
+          {% if cart.item_count > 0 %}
+            <span class="header__cart-count">{{ cart.item_count }}</span>
+          {% endif %}
+        </span>
+      </a>
+    </div>
   </div>
 </header>
 
 {% stylesheet %}
-  header {
-    height: 5rem;
+  .header {
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  .header__inner {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 1rem var(--page-margin);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
   }
-  header a {
-    position: relative;
+  .header__logo a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: var(--color-foreground);
+  }
+  .header__logo img {
+    max-height: 50px;
+    width: auto;
+  }
+  .header__logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .header__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .header__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .header__menu-item {
+    position: relative;
+  }
+  .header__menu-item > a {
+    text-decoration: none;
+    color: var(--color-foreground);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+  .header__menu-item > a:hover {
+    opacity: 0.7;
+  }
+  .header__menu-item--has-dropdown > a::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+  }
+  .header__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px var(--color-shadow);
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.3s ease;
+    z-index: 200;
+  }
+  .header__menu-item:hover .header__dropdown {
+    opacity: 1;
+    visibility: visible;
+  }
+  .header__dropdown li {
+    margin: 0;
+  }
+  .header__dropdown a {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+  }
+  .header__dropdown a:hover {
+    background-color: var(--color-background-secondary);
+  }
+  .header__dropdown-item--has-submenu {
+    position: relative;
+  }
+  .header__dropdown-item--has-submenu > a::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 5px solid currentColor;
+    float: right;
+    margin-top: 0.4rem;
+  }
+  .header__submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 180px;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px var(--color-shadow);
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.3s ease;
+    z-index: 201;
+  }
+  .header__dropdown-item--has-submenu:hover > .header__submenu {
+    opacity: 1;
+    visibility: visible;
+  }
+  .header__submenu a {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+  }
+  .header__submenu a:hover {
+    background-color: var(--color-background-secondary);
+  }
+
+  /* Theme Toggle */
+  .header__theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--color-foreground);
+    transition: opacity 0.2s ease;
+  }
+  .header__theme-toggle:hover {
+    opacity: 0.7;
+  }
+  .header__theme-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .header__theme-icon--moon {
+    display: none;
+  }
+  [data-theme="dark"] .header__theme-icon--sun {
+    display: none;
+  }
+  [data-theme="dark"] .header__theme-icon--moon {
+    display: block;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .header__theme-icon--sun {
+      display: none;
+    }
+    :root:not([data-theme="light"]) .header__theme-icon--moon {
+      display: block;
+    }
+  }
+  .header__icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .header__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-foreground);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .header__icon:hover {
+    opacity: 0.7;
+  }
+  .header__icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .header__currency select,
+  .header__currency-display {
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    color: var(--color-foreground);
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+  .header__currency-form {
+    display: flex;
+  }
+  .header__cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .header__cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    font-size: 0.7rem;
+    font-weight: 600;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  header a sup {
-    position: absolute;
-    left: 100%;
-    overflow: hidden;
-    max-width: var(--page-margin);
-  }
-  header svg {
-    width: 2rem;
-  }
-  header .header__menu,
-  header .header__icons {
-    display: flex;
-    gap: 1rem;
+
+  @media (max-width: 900px) {
+    .header__inner {
+      flex-wrap: wrap;
+    }
+    .header__nav {
+      order: 3;
+      flex-basis: 100%;
+      justify-content: flex-start;
+      padding-top: 1rem;
+    }
+    .header__menu {
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+    .header__dropdown {
+      left: 0;
+      transform: none;
+    }
   }
 {% endstylesheet %}
 
+{% javascript %}
+  (function() {
+    const toggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+
+    // Check for saved theme preference or system preference
+    function getPreferredTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme;
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // Apply theme
+    function setTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    // Initialize theme
+    setTheme(getPreferredTheme());
+
+    // Toggle theme on button click
+    if (toggle) {
+      toggle.addEventListener('click', function() {
+        const currentTheme = root.getAttribute('data-theme') || getPreferredTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      });
+    }
+
+    // Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  })();
+{% endjavascript %}
+
 {% schema %}
 {
-  "name": "t:general.header",
+  "name": "Header",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "default": 120,
+      "unit": "px"
+    },
     {
       "type": "link_list",
       "id": "menu",
-      "label": "t:labels.menu"
+      "label": "Menu",
+      "default": "main-menu"
     },
     {
       "type": "link_list",
       "id": "customer_account_menu",
-      "label": "t:labels.customer_account_menu",
+      "label": "Customer account menu",
       "default": "customer-account-main-menu"
     }
   ]

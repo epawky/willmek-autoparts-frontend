@@ -1,0 +1,19 @@
+{
+  "name": "Contact",
+  "sections": {
+    "contact-form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Contact Us",
+        "subtitle": "Have a question about parts, orders, or your Mini? We're here to help!",
+        "email": "info@willmekautoparts.com",
+        "phone": "(555) 123-4567",
+        "address": "123 Mini Cooper Lane\nAutomotive District\nCity, State 12345",
+        "hours": "Monday - Friday: 9am - 6pm\nSaturday: 10am - 4pm\nSunday: Closed"
+      }
+    }
+  },
+  "order": [
+    "contact-form"
+  ]
+}

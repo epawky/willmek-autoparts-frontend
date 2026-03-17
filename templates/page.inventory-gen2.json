@@ -1,0 +1,16 @@
+{
+  "name": "Gen 2 Mini Inventory",
+  "sections": {
+    "inventory-search": {
+      "type": "inventory-search",
+      "settings": {
+        "heading": "Gen 2 Mini Parts",
+        "subtitle": "R55-R61 parts from 2007-2013",
+        "generation": "gen2"
+      }
+    }
+  },
+  "order": [
+    "inventory-search"
+  ]
+}

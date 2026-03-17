@@ -1,0 +1,217 @@
+<section class="policies">
+  <div class="policies__container">
+    <h1 class="policies__title">{{ section.settings.heading }}</h1>
+
+    <nav class="policies__nav">
+      <a href="#shipping-policy" class="policies__nav-link">Shipping Policy</a>
+      <a href="#refund-policy" class="policies__nav-link">Refund Policy</a>
+      <a href="#privacy-policy" class="policies__nav-link">Privacy Policy</a>
+      <a href="#terms-of-service" class="policies__nav-link">Terms of Service</a>
+    </nav>
+
+    <div class="policies__content">
+      {%- if shop.policies.shipping_policy != blank -%}
+        <article class="policies__section" id="shipping-policy">
+          <h2 class="policies__section-title">Shipping Policy</h2>
+          <div class="policies__section-content">
+            {{ shop.policies.shipping_policy.body }}
+          </div>
+        </article>
+      {%- else -%}
+        <article class="policies__section" id="shipping-policy">
+          <h2 class="policies__section-title">Shipping Policy</h2>
+          <div class="policies__section-content">
+            <p>Shipping policy coming soon. Please <a href="/pages/contact">contact us</a> for shipping information.</p>
+          </div>
+        </article>
+      {%- endif -%}
+
+      {%- if shop.policies.refund_policy != blank -%}
+        <article class="policies__section" id="refund-policy">
+          <h2 class="policies__section-title">Refund Policy</h2>
+          <div class="policies__section-content">
+            {{ shop.policies.refund_policy.body }}
+          </div>
+        </article>
+      {%- else -%}
+        <article class="policies__section" id="refund-policy">
+          <h2 class="policies__section-title">Refund Policy</h2>
+          <div class="policies__section-content">
+            <p>Refund policy coming soon. Please <a href="/pages/contact">contact us</a> for return information.</p>
+          </div>
+        </article>
+      {%- endif -%}
+
+      {%- if shop.policies.privacy_policy != blank -%}
+        <article class="policies__section" id="privacy-policy">
+          <h2 class="policies__section-title">Privacy Policy</h2>
+          <div class="policies__section-content">
+            {{ shop.policies.privacy_policy.body }}
+          </div>
+        </article>
+      {%- else -%}
+        <article class="policies__section" id="privacy-policy">
+          <h2 class="policies__section-title">Privacy Policy</h2>
+          <div class="policies__section-content">
+            <p>Privacy policy coming soon.</p>
+          </div>
+        </article>
+      {%- endif -%}
+
+      {%- if shop.policies.terms_of_service != blank -%}
+        <article class="policies__section" id="terms-of-service">
+          <h2 class="policies__section-title">Terms of Service</h2>
+          <div class="policies__section-content">
+            {{ shop.policies.terms_of_service.body }}
+          </div>
+        </article>
+      {%- else -%}
+        <article class="policies__section" id="terms-of-service">
+          <h2 class="policies__section-title">Terms of Service</h2>
+          <div class="policies__section-content">
+            <p>Terms of service coming soon.</p>
+          </div>
+        </article>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .policies {
+    padding: 4rem var(--page-margin);
+    background-color: var(--color-background);
+  }
+  .policies__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .policies__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    color: var(--color-foreground);
+    text-align: center;
+  }
+  .policies__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background-color: var(--color-background-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+  .policies__nav-link {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    text-decoration: none;
+    border-radius: var(--style-border-radius-inputs, 4px);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .policies__nav-link:hover {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+  }
+  .policies__content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .policies__section {
+    scroll-margin-top: 100px;
+    padding: 2rem;
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+  .policies__section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    color: var(--color-foreground);
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-accent);
+  }
+  .policies__section-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-foreground);
+  }
+  .policies__section-content h1,
+  .policies__section-content h2,
+  .policies__section-content h3,
+  .policies__section-content h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-foreground);
+  }
+  .policies__section-content h1:first-child,
+  .policies__section-content h2:first-child,
+  .policies__section-content h3:first-child {
+    margin-top: 0;
+  }
+  .policies__section-content p {
+    margin: 0 0 1rem 0;
+  }
+  .policies__section-content ul,
+  .policies__section-content ol {
+    margin: 0 0 1rem 1.5rem;
+    padding: 0;
+  }
+  .policies__section-content li {
+    margin-bottom: 0.5rem;
+  }
+  .policies__section-content a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+  .policies__section-content a:hover {
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .policies {
+      padding: 2.5rem var(--page-margin);
+    }
+    .policies__title {
+      font-size: 1.75rem;
+    }
+    .policies__nav {
+      flex-direction: column;
+      padding: 1rem;
+    }
+    .policies__nav-link {
+      text-align: center;
+    }
+    .policies__section {
+      padding: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Store Policies",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Store Policies"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Policies"
+    }
+  ]
+}
+{% endschema %}

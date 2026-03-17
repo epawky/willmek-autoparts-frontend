@@ -1,0 +1,14 @@
+{
+  "name": "Store Policies",
+  "sections": {
+    "store-policies": {
+      "type": "store-policies",
+      "settings": {
+        "heading": "Store Policies"
+      }
+    }
+  },
+  "order": [
+    "store-policies"
+  ]
+}

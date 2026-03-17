@@ -1,0 +1,187 @@
+<section class="category-cards">
+  <div class="category-cards__container">
+    <h2 class="category-cards__title">{{ section.settings.heading }}</h2>
+    <div class="category-cards__grid">
+      <a href="/pages/mini-parts" class="category-card">
+        <div class="category-card__image">
+          <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Mini Parts" loading="lazy">
+        </div>
+        <div class="category-card__content">
+          <h3 class="category-card__name">Mini Parts</h3>
+          <p class="category-card__description">OEM & aftermarket parts for all Mini generations</p>
+        </div>
+      </a>
+
+      <a href="/collections/performance-parts" class="category-card">
+        <div class="category-card__image">
+          <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Performance Parts" loading="lazy">
+        </div>
+        <div class="category-card__content">
+          <h3 class="category-card__name">Performance Parts</h3>
+          <p class="category-card__description">Exhaust, intake, suspension & tuning upgrades</p>
+        </div>
+      </a>
+
+      <a href="/collections/wheels" class="category-card">
+        <div class="category-card__image">
+          <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Wheels" loading="lazy">
+        </div>
+        <div class="category-card__content">
+          <h3 class="category-card__name">Wheels</h3>
+          <p class="category-card__description">OEM & aftermarket wheels for all Mini models</p>
+        </div>
+      </a>
+
+      <a href="/collections/apparel-and-merch" class="category-card">
+        <div class="category-card__image">
+          <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Apparel & Merch" loading="lazy">
+        </div>
+        <div class="category-card__content">
+          <h3 class="category-card__name">Apparel & Merch</h3>
+          <p class="category-card__description">Shirts, hats & accessories for Mini enthusiasts</p>
+        </div>
+      </a>
+
+      <a href="/blogs/news" class="category-card">
+        <div class="category-card__image">
+          <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Blog" loading="lazy">
+        </div>
+        <div class="category-card__content">
+          <h3 class="category-card__name">Blog</h3>
+          <p class="category-card__description">News, builds & Mini adventures from the shop</p>
+        </div>
+      </a>
+
+      <a href="/pages/policies" class="category-card">
+        <div class="category-card__image">
+          <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Store Policies" loading="lazy">
+        </div>
+        <div class="category-card__content">
+          <h3 class="category-card__name">Store Policies</h3>
+          <p class="category-card__description">Shipping, returns & terms of service</p>
+        </div>
+      </a>
+
+      <a href="/pages/contact" class="category-card">
+        <div class="category-card__image">
+          <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Contact" loading="lazy">
+        </div>
+        <div class="category-card__content">
+          <h3 class="category-card__name">Contact</h3>
+          <p class="category-card__description">Get in touch with our team</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .category-cards {
+    padding: 4rem var(--page-margin);
+    background-color: var(--color-background);
+  }
+  .category-cards__container {
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+  .category-cards__title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 2.5rem 0;
+    color: var(--color-foreground);
+  }
+  .category-cards__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--color-foreground);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--color-shadow);
+    border-color: var(--color-accent);
+  }
+  .category-card__image {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-pepper);
+    padding: 1.5rem;
+  }
+  .category-card__image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .category-card:hover .category-card__image img {
+    transform: scale(1.05);
+  }
+  .category-card__content {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+  .category-card__name {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+  .category-card__description {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .category-cards {
+      padding: 2.5rem var(--page-margin);
+    }
+    .category-cards__title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .category-cards__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Category Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "image_picker",
+      "id": "placeholder_image",
+      "label": "Placeholder image",
+      "info": "Used for all cards until individual images are set"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Cards"
+    }
+  ]
+}
+{% endschema %}

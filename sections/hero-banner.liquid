@@ -1,0 +1,169 @@
+<section class="hero-banner">
+  {%- if section.settings.image != blank -%}
+    <img
+      class="hero-banner__image"
+      src="{{ section.settings.image | image_url: width: 1920 }}"
+      alt="{{ section.settings.image.alt | default: 'Hero banner' }}"
+      width="1920"
+      height="{{ 1920 | divided_by: section.settings.image.aspect_ratio | round }}"
+      loading="eager"
+      fetchpriority="high"
+    >
+  {%- else -%}
+    <img
+      class="hero-banner__image"
+      src="{{ 'hero-mini-road.png' | asset_url }}"
+      alt="Mini Cooper on winding road"
+      loading="eager"
+      fetchpriority="high"
+    >
+  {%- endif -%}
+
+  {%- if section.settings.show_cta -%}
+    <div class="hero-banner__cta">
+      <div class="hero-banner__cta-content">
+        {%- if section.settings.cta_heading != blank -%}
+          <h2 class="hero-banner__cta-heading">{{ section.settings.cta_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.cta_text != blank -%}
+          <p class="hero-banner__cta-text">{{ section.settings.cta_text }}</p>
+        {%- endif -%}
+        {%- if section.settings.cta_link != blank and section.settings.cta_button_text != blank -%}
+          <a href="{{ section.settings.cta_link }}" class="hero-banner__cta-button">
+            {{ section.settings.cta_button_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% stylesheet %}
+  .hero-banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .hero-banner__image,
+  .hero-banner__placeholder svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 80vh;
+  }
+  .hero-banner__placeholder {
+    width: 100%;
+    background: #e0e0e0;
+  }
+  .hero-banner__cta {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    max-width: 400px;
+    background-color: var(--color-background);
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px var(--color-shadow);
+    transition: background-color 0.3s ease;
+  }
+  .hero-banner__cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .hero-banner__cta-heading {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+  }
+  .hero-banner__cta-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-foreground);
+    opacity: 0.85;
+  }
+  .hero-banner__cta-button {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-accent, var(--color-foreground));
+    color: var(--color-accent-text, var(--color-background));
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--input-border-radius, 4px);
+    transition: opacity 0.2s ease, background-color 0.3s ease;
+    text-align: center;
+  }
+  .hero-banner__cta-button:hover {
+    opacity: 0.85;
+  }
+
+  @media (max-width: 768px) {
+    .hero-banner__cta {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      max-width: 100%;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .hero-banner__image {
+      max-height: 50vh;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show call to action",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Heading",
+      "default": "Check out our blog"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "Text",
+      "default": "Learn more about whats going on around the shop by checking out our blog and all the MINI adventures we are going on!"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "Button text",
+      "default": "Read the Blog"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

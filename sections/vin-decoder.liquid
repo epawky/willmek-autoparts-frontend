@@ -1,0 +1,361 @@
+<section class="vin-decoder">
+  <div class="vin-decoder__container">
+    <h1 class="vin-decoder__title">{{ section.settings.heading }}</h1>
+    <p class="vin-decoder__subtitle">{{ section.settings.subtitle }}</p>
+
+    <div class="vin-decoder__form">
+      <div class="vin-decoder__input-wrapper">
+        <input
+          type="text"
+          id="vin-input"
+          class="vin-decoder__input"
+          placeholder="Enter your 17-character VIN"
+          maxlength="17"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button type="button" id="vin-submit" class="vin-decoder__button">
+          Decode VIN
+        </button>
+      </div>
+      <p class="vin-decoder__hint">Find your VIN on the driver's side dashboard or door jamb</p>
+    </div>
+
+    <div id="vin-loading" class="vin-decoder__loading" style="display: none;">
+      <div class="vin-decoder__spinner"></div>
+      <p>Decoding your VIN...</p>
+    </div>
+
+    <div id="vin-error" class="vin-decoder__error" style="display: none;">
+      <p id="vin-error-message"></p>
+    </div>
+
+    <div id="vin-results" class="vin-decoder__results" style="display: none;">
+      <h2 class="vin-decoder__results-title">Vehicle Information</h2>
+      <div class="vin-decoder__results-grid" id="vin-results-grid">
+        <!-- Results populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .vin-decoder {
+    padding: 4rem var(--page-margin);
+    background-color: var(--color-background);
+    min-height: 60vh;
+  }
+  .vin-decoder__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .vin-decoder__title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: var(--color-foreground);
+  }
+  .vin-decoder__subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 2.5rem 0;
+  }
+  .vin-decoder__form {
+    margin-bottom: 2rem;
+  }
+  .vin-decoder__input-wrapper {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .vin-decoder__input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+    font-family: monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid var(--color-border);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    transition: border-color 0.2s ease;
+  }
+  .vin-decoder__input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+  .vin-decoder__input::placeholder {
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--color-text-secondary);
+  }
+  .vin-decoder__button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border: none;
+    border-radius: var(--style-border-radius-inputs, 4px);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+  }
+  .vin-decoder__button:hover {
+    background-color: var(--color-accent-hover);
+  }
+  .vin-decoder__button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .vin-decoder__hint {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  .vin-decoder__loading {
+    text-align: center;
+    padding: 3rem;
+  }
+  .vin-decoder__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .vin-decoder__error {
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    border-radius: var(--style-border-radius-inputs, 4px);
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .vin-decoder__error p {
+    margin: 0;
+    color: #dc2626;
+  }
+  [data-theme="dark"] .vin-decoder__error {
+    background-color: rgba(239, 68, 68, 0.15);
+  }
+  .vin-decoder__results {
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  .vin-decoder__results-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    color: var(--color-foreground);
+  }
+  .vin-decoder__results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+  .vin-decoder__result-item {
+    background-color: var(--color-background);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
+  .vin-decoder__result-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin: 0 0 0.35rem 0;
+  }
+  .vin-decoder__result-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .vin-decoder {
+      padding: 2.5rem var(--page-margin);
+    }
+    .vin-decoder__title {
+      font-size: 1.75rem;
+    }
+    .vin-decoder__input-wrapper {
+      flex-direction: column;
+    }
+    .vin-decoder__button {
+      width: 100%;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    const input = document.getElementById('vin-input');
+    const button = document.getElementById('vin-submit');
+    const loading = document.getElementById('vin-loading');
+    const error = document.getElementById('vin-error');
+    const errorMessage = document.getElementById('vin-error-message');
+    const results = document.getElementById('vin-results');
+    const resultsGrid = document.getElementById('vin-results-grid');
+
+    const API_URL = 'https://auto-dismantler-app.vercel.app/api/public/vin';
+
+    function showLoading() {
+      loading.style.display = 'block';
+      error.style.display = 'none';
+      results.style.display = 'none';
+    }
+
+    function showError(message) {
+      loading.style.display = 'none';
+      error.style.display = 'block';
+      errorMessage.textContent = message;
+      results.style.display = 'none';
+    }
+
+    function showResults(data) {
+      loading.style.display = 'none';
+      error.style.display = 'none';
+      results.style.display = 'block';
+
+      resultsGrid.innerHTML = '';
+
+      const fields = [
+        { key: 'year', label: 'Year' },
+        { key: 'make', label: 'Make' },
+        { key: 'model', label: 'Model' },
+        { key: 'trim', label: 'Trim' },
+        { key: 'body', label: 'Body Style' },
+        { key: 'engine', label: 'Engine' },
+        { key: 'transmission', label: 'Transmission' },
+        { key: 'drivetrain', label: 'Drivetrain' },
+        { key: 'fuelType', label: 'Fuel Type' },
+        { key: 'doors', label: 'Doors' },
+        { key: 'manufacturerCountry', label: 'Manufactured In' },
+        { key: 'plantCity', label: 'Plant Location' }
+      ];
+
+      fields.forEach(field => {
+        const value = data[field.key];
+        if (value && value !== 'N/A' && value !== '') {
+          const item = document.createElement('div');
+          item.className = 'vin-decoder__result-item';
+          item.innerHTML = `
+            <p class="vin-decoder__result-label">${field.label}</p>
+            <p class="vin-decoder__result-value">${value}</p>
+          `;
+          resultsGrid.appendChild(item);
+        }
+      });
+
+      // Add any additional fields from the response
+      Object.keys(data).forEach(key => {
+        const alreadyShown = fields.some(f => f.key === key);
+        if (!alreadyShown && data[key] && data[key] !== 'N/A' && data[key] !== '') {
+          const label = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+          const item = document.createElement('div');
+          item.className = 'vin-decoder__result-item';
+          item.innerHTML = `
+            <p class="vin-decoder__result-label">${label}</p>
+            <p class="vin-decoder__result-value">${data[key]}</p>
+          `;
+          resultsGrid.appendChild(item);
+        }
+      });
+    }
+
+    async function decodeVIN(vin) {
+      showLoading();
+      button.disabled = true;
+
+      try {
+        const response = await fetch(`${API_URL}?vin=${encodeURIComponent(vin)}`);
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || 'Failed to decode VIN. Please check and try again.');
+        }
+
+        const data = await response.json();
+        showResults(data);
+      } catch (err) {
+        showError(err.message || 'An error occurred. Please try again.');
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    function validateVIN(vin) {
+      if (!vin) {
+        return 'Please enter a VIN';
+      }
+      if (vin.length !== 17) {
+        return 'VIN must be exactly 17 characters';
+      }
+      if (!/^[A-HJ-NPR-Z0-9]+$/i.test(vin)) {
+        return 'VIN contains invalid characters (I, O, Q are not allowed)';
+      }
+      return null;
+    }
+
+    button.addEventListener('click', function() {
+      const vin = input.value.trim().toUpperCase();
+      const validationError = validateVIN(vin);
+
+      if (validationError) {
+        showError(validationError);
+        return;
+      }
+
+      decodeVIN(vin);
+    });
+
+    input.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        button.click();
+      }
+    });
+
+    // Auto-format input to uppercase
+    input.addEventListener('input', function() {
+      this.value = this.value.toUpperCase();
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "VIN Decoder",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Mini VIN Decoder"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Enter your Mini's VIN to decode vehicle information and find compatible parts"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VIN Decoder"
+    }
+  ]
+}
+{% endschema %}

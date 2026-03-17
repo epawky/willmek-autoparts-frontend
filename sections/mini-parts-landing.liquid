@@ -1,0 +1,323 @@
+<section class="mini-parts">
+  <div class="mini-parts__container">
+    <header class="mini-parts__header">
+      <h1 class="mini-parts__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="mini-parts__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="mini-parts__grid">
+      {%- comment -%} Classic Mini {%- endcomment -%}
+      <div class="mini-parts__card mini-parts__card--has-submenu">
+        <a href="/pages/inventory-classic" class="mini-parts__card-main">
+          <div class="mini-parts__card-image">
+            <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Classic Mini" loading="lazy">
+          </div>
+          <div class="mini-parts__card-content">
+            <h2 class="mini-parts__card-title">Classic Mini</h2>
+            <p class="mini-parts__card-years">1959 - 2000</p>
+            <p class="mini-parts__card-description">Original Austin & Morris Mini, Cooper, Cooper S, and variants</p>
+          </div>
+        </a>
+        <div class="mini-parts__card-models">
+          <a href="/pages/inventory-classic?model=classic-mini" class="mini-parts__model">Classic Mini</a>
+          <a href="/pages/inventory-classic?model=mini-cooper" class="mini-parts__model">Mini Cooper</a>
+          <a href="/pages/inventory-classic?model=mini-cooper-s" class="mini-parts__model">Mini Cooper S</a>
+        </div>
+      </div>
+
+      {%- comment -%} Gen 1 {%- endcomment -%}
+      <div class="mini-parts__card mini-parts__card--has-submenu">
+        <a href="/pages/inventory-gen1" class="mini-parts__card-main">
+          <div class="mini-parts__card-image">
+            <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Gen 1 Mini" loading="lazy">
+          </div>
+          <div class="mini-parts__card-content">
+            <h2 class="mini-parts__card-title">Gen 1</h2>
+            <p class="mini-parts__card-years">2002 - 2006</p>
+            <p class="mini-parts__card-description">R50, R52, R53 - The BMW era begins</p>
+          </div>
+        </a>
+        <div class="mini-parts__card-models">
+          <a href="/pages/inventory-gen1?model=r50" class="mini-parts__model">R50 One/Cooper</a>
+          <a href="/pages/inventory-gen1?model=r52" class="mini-parts__model">R52 Convertible</a>
+          <a href="/pages/inventory-gen1?model=r52-s" class="mini-parts__model">R52 Convertible S</a>
+          <a href="/pages/inventory-gen1?model=r53" class="mini-parts__model">R53 Cooper S</a>
+          <a href="/pages/inventory-gen1?model=r53-gp" class="mini-parts__model mini-parts__model--special">R53 GP</a>
+        </div>
+      </div>
+
+      {%- comment -%} Gen 2 {%- endcomment -%}
+      <div class="mini-parts__card mini-parts__card--has-submenu">
+        <a href="/pages/inventory-gen2" class="mini-parts__card-main">
+          <div class="mini-parts__card-image">
+            <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Gen 2 Mini" loading="lazy">
+          </div>
+          <div class="mini-parts__card-content">
+            <h2 class="mini-parts__card-title">Gen 2</h2>
+            <p class="mini-parts__card-years">2007 - 2013</p>
+            <p class="mini-parts__card-description">R55-R61 - Expanded lineup with Clubman, Countryman & more</p>
+          </div>
+        </a>
+        <div class="mini-parts__card-models">
+          <a href="/pages/inventory-gen2?model=r55" class="mini-parts__model">R55 Clubman</a>
+          <a href="/pages/inventory-gen2?model=r55-s" class="mini-parts__model">R55 Clubman S</a>
+          <a href="/pages/inventory-gen2?model=r56" class="mini-parts__model">R56 Hardtop</a>
+          <a href="/pages/inventory-gen2?model=r56-s" class="mini-parts__model">R56 Hardtop S/JCW</a>
+          <a href="/pages/inventory-gen2?model=r56-gp" class="mini-parts__model mini-parts__model--special">R56 GP</a>
+          <a href="/pages/inventory-gen2?model=r57" class="mini-parts__model">R57 Convertible</a>
+          <a href="/pages/inventory-gen2?model=r57-s" class="mini-parts__model">R57 Convertible S</a>
+          <a href="/pages/inventory-gen2?model=r58" class="mini-parts__model">R58 Coupe</a>
+          <a href="/pages/inventory-gen2?model=r58-s" class="mini-parts__model">R58 Coupe S/JCW</a>
+          <a href="/pages/inventory-gen2?model=r59" class="mini-parts__model">R59 Roadster</a>
+          <a href="/pages/inventory-gen2?model=r59-s" class="mini-parts__model">R59 Roadster S/JCW</a>
+          <a href="/pages/inventory-gen2?model=r60" class="mini-parts__model">R60 Countryman</a>
+          <a href="/pages/inventory-gen2?model=r60-s" class="mini-parts__model">R60 Countryman S</a>
+          <a href="/pages/inventory-gen2?model=r61" class="mini-parts__model">R61 Paceman</a>
+          <a href="/pages/inventory-gen2?model=r61-s" class="mini-parts__model">R61 Paceman S</a>
+        </div>
+      </div>
+
+      {%- comment -%} Gen 3 {%- endcomment -%}
+      <div class="mini-parts__card mini-parts__card--has-submenu">
+        <a href="/pages/inventory-gen3" class="mini-parts__card-main">
+          <div class="mini-parts__card-image">
+            <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="Gen 3 Mini" loading="lazy">
+          </div>
+          <div class="mini-parts__card-content">
+            <h2 class="mini-parts__card-title">Gen 3</h2>
+            <p class="mini-parts__card-years">2014 - Present</p>
+            <p class="mini-parts__card-description">F54-F60 - Modern platform with latest tech</p>
+          </div>
+        </a>
+        <div class="mini-parts__card-models">
+          <a href="/pages/inventory-gen3?model=f54" class="mini-parts__model">F54 Clubman</a>
+          <a href="/pages/inventory-gen3?model=f54-s" class="mini-parts__model">F54 Clubman S/JCW</a>
+          <a href="/pages/inventory-gen3?model=f55" class="mini-parts__model">F55 Hardtop 4-Door</a>
+          <a href="/pages/inventory-gen3?model=f55-s" class="mini-parts__model">F55 Hardtop 4-Door S</a>
+          <a href="/pages/inventory-gen3?model=f56" class="mini-parts__model">F56 Hardtop 2-Door</a>
+          <a href="/pages/inventory-gen3?model=f56-s" class="mini-parts__model">F56 Hardtop S/JCW</a>
+          <a href="/pages/inventory-gen3?model=f56-gp" class="mini-parts__model mini-parts__model--special">F56 GP3</a>
+          <a href="/pages/inventory-gen3?model=f57" class="mini-parts__model">F57 Convertible</a>
+          <a href="/pages/inventory-gen3?model=f57-s" class="mini-parts__model">F57 Convertible S/JCW</a>
+          <a href="/pages/inventory-gen3?model=f60" class="mini-parts__model">F60 Countryman</a>
+          <a href="/pages/inventory-gen3?model=f60-s" class="mini-parts__model">F60 Countryman S/JCW</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mini-parts__all">
+      <a href="/pages/inventory-all" class="mini-parts__all-link">
+        Shop All Mini Parts
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .mini-parts {
+    padding: 4rem var(--page-margin);
+    background-color: var(--color-background);
+  }
+  .mini-parts__container {
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+  .mini-parts__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .mini-parts__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: var(--color-foreground);
+  }
+  .mini-parts__subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .mini-parts__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .mini-parts__card {
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .mini-parts__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px var(--color-shadow);
+    border-color: var(--color-accent);
+  }
+  a.mini-parts__card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .mini-parts__card-main {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .mini-parts__card-image {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-pepper);
+    padding: 2rem;
+    overflow: hidden;
+  }
+  .mini-parts__card-image img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .mini-parts__card:hover .mini-parts__card-image img {
+    transform: scale(1.08);
+  }
+  .mini-parts__card-content {
+    padding: 1.5rem 2rem 2rem;
+  }
+  .mini-parts__card-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+    color: var(--color-foreground);
+  }
+  .mini-parts__card-years {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin: 0 0 0.75rem 0;
+  }
+  .mini-parts__card-description {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .mini-parts__card-models {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 2rem 2rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.25rem;
+    margin-top: 0;
+  }
+  .mini-parts__model {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    text-decoration: none;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 50px;
+    transition: all 0.15s ease;
+  }
+  .mini-parts__model:hover {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+  }
+  .mini-parts__model--special {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+  }
+  .mini-parts__model--special:hover {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
+  .mini-parts__all {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .mini-parts__all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-accent-text);
+    text-decoration: none;
+    background-color: var(--color-accent);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    transition: background-color 0.2s ease;
+  }
+  .mini-parts__all-link:hover {
+    background-color: var(--color-accent-hover);
+  }
+  .mini-parts__all-link svg {
+    transition: transform 0.2s ease;
+  }
+  .mini-parts__all-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .mini-parts__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .mini-parts {
+      padding: 2.5rem var(--page-margin);
+    }
+    .mini-parts__title {
+      font-size: 1.75rem;
+    }
+    .mini-parts__card-content {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .mini-parts__card-models {
+      padding: 1rem 1.5rem 1.5rem;
+    }
+    .mini-parts__card-title {
+      font-size: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Mini Parts Landing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Mini Parts"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Find parts for every generation of Mini Cooper"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mini Parts Landing"
+    }
+  ]
+}
+{% endschema %}

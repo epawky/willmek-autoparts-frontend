@@ -1,0 +1,16 @@
+{
+  "name": "Gen 3 Mini Inventory",
+  "sections": {
+    "inventory-search": {
+      "type": "inventory-search",
+      "settings": {
+        "heading": "Gen 3 Mini Parts",
+        "subtitle": "F54-F60 parts from 2014-present",
+        "generation": "gen3"
+      }
+    }
+  },
+  "order": [
+    "inventory-search"
+  ]
+}

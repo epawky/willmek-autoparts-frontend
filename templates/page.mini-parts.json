@@ -1,0 +1,15 @@
+{
+  "name": "Mini Parts",
+  "sections": {
+    "mini-parts-landing": {
+      "type": "mini-parts-landing",
+      "settings": {
+        "heading": "Mini Parts",
+        "subtitle": "Find parts for every generation of Mini Cooper"
+      }
+    }
+  },
+  "order": [
+    "mini-parts-landing"
+  ]
+}

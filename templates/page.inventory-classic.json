@@ -1,0 +1,16 @@
+{
+  "name": "Classic Mini Inventory",
+  "sections": {
+    "inventory-search": {
+      "type": "inventory-search",
+      "settings": {
+        "heading": "Classic Mini Parts",
+        "subtitle": "Original Austin & Morris Mini parts from 1959-2000",
+        "generation": "classic"
+      }
+    }
+  },
+  "order": [
+    "inventory-search"
+  ]
+}

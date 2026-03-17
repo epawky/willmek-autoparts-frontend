@@ -1,0 +1,658 @@
+<section class="inventory-search">
+  <div class="inventory-search__container">
+    <header class="inventory-search__header">
+      <h1 class="inventory-search__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="inventory-search__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="inventory-search__filters">
+      <div class="inventory-search__filter-row">
+        <div class="inventory-search__filter">
+          <label for="filter-model" class="inventory-search__label">Model</label>
+          <select id="filter-model" class="inventory-search__select">
+            <option value="">All Models</option>
+            {%- case section.settings.generation -%}
+              {%- when 'classic' -%}
+                <option value="classic-mini">Classic Mini</option>
+                <option value="mini-cooper">Mini Cooper</option>
+                <option value="mini-cooper-s">Mini Cooper S</option>
+              {%- when 'gen1' -%}
+                <option value="r50">R50 One/Cooper</option>
+                <option value="r53">R53 Cooper S</option>
+                <option value="r52">R52 Convertible</option>
+                <option value="r52-s">R52 Convertible S</option>
+                <option value="r53-gp">R53 GP</option>
+              {%- when 'gen2' -%}
+                <option value="r55">R55 Clubman</option>
+                <option value="r55-s">R55 Clubman S</option>
+                <option value="r56">R56 Hardtop</option>
+                <option value="r56-s">R56 Hardtop S/JCW</option>
+                <option value="r56-gp">R56 GP</option>
+                <option value="r57">R57 Convertible</option>
+                <option value="r57-s">R57 Convertible S</option>
+                <option value="r58">R58 Coupe</option>
+                <option value="r58-s">R58 Coupe S/JCW</option>
+                <option value="r59">R59 Roadster</option>
+                <option value="r59-s">R59 Roadster S/JCW</option>
+                <option value="r60">R60 Countryman</option>
+                <option value="r60-s">R60 Countryman S</option>
+                <option value="r61">R61 Paceman</option>
+                <option value="r61-s">R61 Paceman S</option>
+              {%- when 'gen3' -%}
+                <option value="f54">F54 Clubman</option>
+                <option value="f54-s">F54 Clubman S/JCW</option>
+                <option value="f55">F55 Hardtop 4-Door</option>
+                <option value="f55-s">F55 Hardtop 4-Door S</option>
+                <option value="f56">F56 Hardtop 2-Door</option>
+                <option value="f56-s">F56 Hardtop S/JCW</option>
+                <option value="f56-gp">F56 GP3</option>
+                <option value="f57">F57 Convertible</option>
+                <option value="f57-s">F57 Convertible S/JCW</option>
+                <option value="f60">F60 Countryman</option>
+                <option value="f60-s">F60 Countryman S/JCW</option>
+              {%- else -%}
+                <optgroup label="Classic Mini">
+                  <option value="classic-mini">Classic Mini</option>
+                  <option value="mini-cooper">Mini Cooper</option>
+                  <option value="mini-cooper-s">Mini Cooper S</option>
+                </optgroup>
+                <optgroup label="Gen 1 (2002-2006)">
+                  <option value="r50">R50 One/Cooper</option>
+                  <option value="r53">R53 Cooper S</option>
+                  <option value="r52">R52 Convertible</option>
+                  <option value="r52-s">R52 Convertible S</option>
+                  <option value="r53-gp">R53 GP</option>
+                </optgroup>
+                <optgroup label="Gen 2 (2007-2013)">
+                  <option value="r55">R55 Clubman</option>
+                  <option value="r55-s">R55 Clubman S</option>
+                  <option value="r56">R56 Hardtop</option>
+                  <option value="r56-s">R56 Hardtop S/JCW</option>
+                  <option value="r56-gp">R56 GP</option>
+                  <option value="r57">R57 Convertible</option>
+                  <option value="r57-s">R57 Convertible S</option>
+                  <option value="r58">R58 Coupe</option>
+                  <option value="r58-s">R58 Coupe S/JCW</option>
+                  <option value="r59">R59 Roadster</option>
+                  <option value="r59-s">R59 Roadster S/JCW</option>
+                  <option value="r60">R60 Countryman</option>
+                  <option value="r60-s">R60 Countryman S</option>
+                  <option value="r61">R61 Paceman</option>
+                  <option value="r61-s">R61 Paceman S</option>
+                </optgroup>
+                <optgroup label="Gen 3 (2014-Present)">
+                  <option value="f54">F54 Clubman</option>
+                  <option value="f54-s">F54 Clubman S/JCW</option>
+                  <option value="f55">F55 Hardtop 4-Door</option>
+                  <option value="f55-s">F55 Hardtop 4-Door S</option>
+                  <option value="f56">F56 Hardtop 2-Door</option>
+                  <option value="f56-s">F56 Hardtop S/JCW</option>
+                  <option value="f56-gp">F56 GP3</option>
+                  <option value="f57">F57 Convertible</option>
+                  <option value="f57-s">F57 Convertible S/JCW</option>
+                  <option value="f60">F60 Countryman</option>
+                  <option value="f60-s">F60 Countryman S/JCW</option>
+                </optgroup>
+            {%- endcase -%}
+          </select>
+        </div>
+
+        <div class="inventory-search__filter">
+          <label for="filter-category" class="inventory-search__label">Category</label>
+          <select id="filter-category" class="inventory-search__select">
+            <option value="">All Categories</option>
+            <option value="engine">Engine</option>
+            <option value="transmission">Transmission</option>
+            <option value="suspension">Suspension</option>
+            <option value="brakes">Brakes</option>
+            <option value="exhaust">Exhaust</option>
+            <option value="intake">Intake</option>
+            <option value="cooling">Cooling</option>
+            <option value="electrical">Electrical</option>
+            <option value="interior">Interior</option>
+            <option value="exterior">Exterior</option>
+            <option value="body-panels">Body Panels</option>
+            <option value="wheels-tires">Wheels & Tires</option>
+            <option value="lighting">Lighting</option>
+            <option value="accessories">Accessories</option>
+          </select>
+        </div>
+
+        <div class="inventory-search__filter inventory-search__filter--search">
+          <label for="filter-search" class="inventory-search__label">Search</label>
+          <div class="inventory-search__search-wrapper">
+            <input
+              type="text"
+              id="filter-search"
+              class="inventory-search__input"
+              placeholder="Part name, number, or keyword..."
+            >
+            <button type="button" id="search-btn" class="inventory-search__search-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="inventory-search__filter-actions">
+        <button type="button" id="apply-filters" class="inventory-search__apply-btn">
+          Apply Filters
+        </button>
+        <button type="button" id="clear-filters" class="inventory-search__clear-btn">
+          Clear All
+        </button>
+      </div>
+    </div>
+
+    <div class="inventory-search__results">
+      <div class="inventory-search__results-header">
+        <p class="inventory-search__results-count">
+          Showing <span id="results-count">{{ collection.products_count | default: 0 }}</span> parts
+        </p>
+        <div class="inventory-search__sort">
+          <label for="sort-by" class="inventory-search__label">Sort by:</label>
+          <select id="sort-by" class="inventory-search__select inventory-search__select--small">
+            <option value="best-selling">Best Selling</option>
+            <option value="title-asc">Name: A-Z</option>
+            <option value="title-desc">Name: Z-A</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="created-desc">Newest</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="inventory-search__grid" id="products-grid">
+        {%- if collection -%}
+          {%- for product in collection.products -%}
+            <a href="{{ product.url }}" class="inventory-card">
+              <div class="inventory-card__image">
+                {%- if product.featured_image -%}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 400 }}"
+                    alt="{{ product.featured_image.alt | default: product.title }}"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <img src="{{ 'mini-line-drawing.png' | asset_url }}" alt="{{ product.title }}" loading="lazy">
+                {%- endif -%}
+              </div>
+              <div class="inventory-card__content">
+                {%- if product.vendor != blank -%}
+                  <p class="inventory-card__vendor">{{ product.vendor }}</p>
+                {%- endif -%}
+                <h3 class="inventory-card__title">{{ product.title }}</h3>
+                <div class="inventory-card__price">
+                  {%- if product.compare_at_price > product.price -%}
+                    <span class="inventory-card__price-sale">{{ product.price | money }}</span>
+                    <span class="inventory-card__price-compare">{{ product.compare_at_price | money }}</span>
+                  {%- else -%}
+                    <span>{{ product.price | money }}</span>
+                  {%- endif -%}
+                </div>
+                {%- if product.available == false -%}
+                  <span class="inventory-card__sold-out">Sold Out</span>
+                {%- endif -%}
+              </div>
+            </a>
+          {%- else -%}
+            <p class="inventory-search__no-results">No products found. Try adjusting your filters.</p>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="inventory-search__placeholder">
+            <p>Select a collection to display products, or use the search to find parts.</p>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if collection.products.size > 0 -%}
+        {%- paginate collection.products by 24 -%}
+          {%- if paginate.pages > 1 -%}
+            <nav class="inventory-search__pagination">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="inventory-search__page-link">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                  Previous
+                </a>
+              {%- endif -%}
+              <span class="inventory-search__page-info">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="inventory-search__page-link">
+                  Next
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+              {%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- endpaginate -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .inventory-search {
+    padding: 4rem var(--page-margin);
+    background-color: var(--color-background);
+    min-height: 80vh;
+  }
+  .inventory-search__container {
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+  .inventory-search__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .inventory-search__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-foreground);
+  }
+  .inventory-search__subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  .inventory-search__filters {
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+  }
+  .inventory-search__filter-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .inventory-search__filter {
+    display: flex;
+    flex-direction: column;
+  }
+  .inventory-search__label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+  }
+  .inventory-search__select {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+  .inventory-search__select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+  .inventory-search__select--small {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  .inventory-search__search-wrapper {
+    display: flex;
+    gap: 0;
+  }
+  .inventory-search__input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    border: 1px solid var(--color-border);
+    border-right: none;
+    border-radius: var(--style-border-radius-inputs, 4px) 0 0 var(--style-border-radius-inputs, 4px);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+  .inventory-search__input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+  .inventory-search__search-btn {
+    padding: 0.75rem 1rem;
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border: none;
+    border-radius: 0 var(--style-border-radius-inputs, 4px) var(--style-border-radius-inputs, 4px) 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+  }
+  .inventory-search__search-btn:hover {
+    background-color: var(--color-accent-hover);
+  }
+  .inventory-search__filter-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  .inventory-search__apply-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border: none;
+    border-radius: var(--style-border-radius-inputs, 4px);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .inventory-search__apply-btn:hover {
+    background-color: var(--color-accent-hover);
+  }
+  .inventory-search__clear-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .inventory-search__clear-btn:hover {
+    border-color: var(--color-foreground);
+    color: var(--color-foreground);
+  }
+  .inventory-search__results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .inventory-search__results-count {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  .inventory-search__sort {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .inventory-search__sort .inventory-search__label {
+    margin-bottom: 0;
+  }
+  .inventory-search__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .inventory-card {
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .inventory-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px var(--color-shadow);
+    border-color: var(--color-accent);
+  }
+  .inventory-card__image {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-pepper);
+    padding: 1rem;
+    overflow: hidden;
+  }
+  .inventory-card__image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .inventory-card:hover .inventory-card__image img {
+    transform: scale(1.05);
+  }
+  .inventory-card__content {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  .inventory-card__vendor {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin: 0 0 0.35rem 0;
+  }
+  .inventory-card__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-foreground);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .inventory-card__price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .inventory-card__price-sale {
+    color: var(--color-accent);
+  }
+  .inventory-card__price-compare {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    text-decoration: line-through;
+  }
+  .inventory-card__sold-out {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: var(--color-text-secondary);
+    color: var(--color-background);
+    border-radius: 3px;
+  }
+  .inventory-search__no-results,
+  .inventory-search__placeholder {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--color-text-secondary);
+  }
+  .inventory-search__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .inventory-search__page-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    text-decoration: none;
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--style-border-radius-inputs, 4px);
+    transition: all 0.2s ease;
+  }
+  .inventory-search__page-link:hover {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+  }
+  .inventory-search__page-info {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .inventory-search__filter-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .inventory-search__filter--search {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 600px) {
+    .inventory-search {
+      padding: 2.5rem var(--page-margin);
+    }
+    .inventory-search__title {
+      font-size: 1.75rem;
+    }
+    .inventory-search__filters {
+      padding: 1.25rem;
+    }
+    .inventory-search__filter-row {
+      grid-template-columns: 1fr;
+    }
+    .inventory-search__results-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .inventory-search__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .inventory-search__pagination {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    const modelSelect = document.getElementById('filter-model');
+    const categorySelect = document.getElementById('filter-category');
+    const searchInput = document.getElementById('filter-search');
+    const sortSelect = document.getElementById('sort-by');
+    const applyBtn = document.getElementById('apply-filters');
+    const clearBtn = document.getElementById('clear-filters');
+    const searchBtn = document.getElementById('search-btn');
+
+    // Pre-select model from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const modelParam = urlParams.get('model');
+    if (modelParam && modelSelect) {
+      modelSelect.value = modelParam;
+    }
+
+    function buildUrl() {
+      const params = new URLSearchParams(window.location.search);
+
+      const model = modelSelect?.value;
+      const category = categorySelect?.value;
+      const search = searchInput?.value?.trim();
+      const sort = sortSelect?.value;
+
+      if (model) {
+        // Redirect to model collection
+        window.location.href = '/collections/' + model + (search ? '?q=' + encodeURIComponent(search) : '');
+        return;
+      }
+
+      if (search) params.set('q', search);
+      else params.delete('q');
+
+      if (sort) params.set('sort_by', sort);
+
+      const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+      window.location.href = newUrl;
+    }
+
+    function clearFilters() {
+      if (modelSelect) modelSelect.value = '';
+      if (categorySelect) categorySelect.value = '';
+      if (searchInput) searchInput.value = '';
+      if (sortSelect) sortSelect.value = 'best-selling';
+      window.location.href = window.location.pathname;
+    }
+
+    if (applyBtn) applyBtn.addEventListener('click', buildUrl);
+    if (clearBtn) clearBtn.addEventListener('click', clearFilters);
+    if (searchBtn) searchBtn.addEventListener('click', buildUrl);
+    if (searchInput) {
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') buildUrl();
+      });
+    }
+    if (sortSelect) {
+      sortSelect.addEventListener('change', buildUrl);
+    }
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Inventory Search",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Parts Inventory"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Search our inventory of quality Mini parts"
+    },
+    {
+      "type": "select",
+      "id": "generation",
+      "label": "Generation",
+      "options": [
+        { "value": "all", "label": "All Generations" },
+        { "value": "classic", "label": "Classic Mini" },
+        { "value": "gen1", "label": "Gen 1 (R50/R52/R53)" },
+        { "value": "gen2", "label": "Gen 2 (R55-R61)" },
+        { "value": "gen3", "label": "Gen 3 (F54-F60)" }
+      ],
+      "default": "all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Inventory Search"
+    }
+  ]
+}
+{% endschema %}

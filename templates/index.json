@@ -1,20 +1,24 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
+    "hero-banner": {
+      "type": "hero-banner",
+      "settings": {
+        "show_cta": true,
+        "cta_heading": "Check out our blog",
+        "cta_text": "Learn more about whats going on around the shop by checking out our blog and all the MINI adventures we are going on!",
+        "cta_button_text": "Read the Blog",
+        "cta_link": "shopify://blogs/news"
+      }
+    },
+    "category-cards": {
+      "type": "category-cards",
+      "settings": {
+        "heading": "Shop by Category"
+      }
     }
   },
   "order": [
-    "main"
+    "hero-banner",
+    "category-cards"
   ]
 }

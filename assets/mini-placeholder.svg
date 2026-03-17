@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" fill="none">
+  <rect width="400" height="250" fill="#F3F1ED"/>
+  <g transform="translate(75, 60) scale(0.8)" stroke="#2B2B2B" stroke-width="3" fill="none">
+    <!-- Body outline -->
+    <path d="M20 120 L20 100 Q20 60 60 50 L120 45 Q140 43 160 50 L240 55 Q280 58 300 80 L300 120" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Roof -->
+    <path d="M85 50 L95 25 Q100 15 120 15 L200 15 Q220 15 225 25 L235 50" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Windows -->
+    <path d="M100 48 L108 28 Q112 22 125 22 L145 22 L145 48 Z" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M155 22 L195 22 Q208 22 212 28 L220 48 L155 48 Z" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Front wheel -->
+    <circle cx="75" cy="120" r="28"/>
+    <circle cx="75" cy="120" r="18"/>
+    <circle cx="75" cy="120" r="8"/>
+    <!-- Rear wheel -->
+    <circle cx="245" cy="120" r="28"/>
+    <circle cx="245" cy="120" r="18"/>
+    <circle cx="245" cy="120" r="8"/>
+    <!-- Headlights -->
+    <ellipse cx="45" cy="85" rx="18" ry="20"/>
+    <ellipse cx="45" cy="85" rx="10" ry="12"/>
+    <!-- Grille -->
+    <rect x="55" y="95" width="40" height="15" rx="3"/>
+    <line x1="65" y1="95" x2="65" y2="110"/>
+    <line x1="75" y1="95" x2="75" y2="110"/>
+    <line x1="85" y1="95" x2="85" y2="110"/>
+    <!-- Front bumper -->
+    <path d="M25 115 L95 115" stroke-linecap="round"/>
+    <!-- Door handle -->
+    <ellipse cx="180" cy="75" rx="8" ry="4"/>
+    <!-- Side mirror -->
+    <ellipse cx="95" cy="55" rx="8" ry="5"/>
+    <!-- Antenna -->
+    <line x1="215" y1="15" x2="225" y2="0" stroke-linecap="round"/>
+    <!-- Mini badge on grille -->
+    <path d="M70 100 L75 97 L80 100 L75 103 Z" fill="#2B2B2B"/>
+    <!-- Fog light -->
+    <circle cx="35" cy="110" r="5"/>
+  </g>
+</svg>

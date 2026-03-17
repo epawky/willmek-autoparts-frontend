@@ -1,0 +1,16 @@
+{
+  "name": "All Mini Inventory",
+  "sections": {
+    "inventory-search": {
+      "type": "inventory-search",
+      "settings": {
+        "heading": "All Mini Parts",
+        "subtitle": "Search our complete inventory of quality Mini parts",
+        "generation": "all"
+      }
+    }
+  },
+  "order": [
+    "inventory-search"
+  ]
+}

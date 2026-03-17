@@ -1,0 +1,15 @@
+{
+  "name": "VIN Decoder",
+  "sections": {
+    "vin-decoder": {
+      "type": "vin-decoder",
+      "settings": {
+        "heading": "Mini VIN Decoder",
+        "subtitle": "Enter your Mini's VIN to decode vehicle information and find compatible parts"
+      }
+    }
+  },
+  "order": [
+    "vin-decoder"
+  ]
+}

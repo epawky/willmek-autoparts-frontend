@@ -1,0 +1,16 @@
+{
+  "name": "Gen 1 Mini Inventory",
+  "sections": {
+    "inventory-search": {
+      "type": "inventory-search",
+      "settings": {
+        "heading": "Gen 1 Mini Parts",
+        "subtitle": "R50, R52, R53 parts from 2002-2006",
+        "generation": "gen1"
+      }
+    }
+  },
+  "order": [
+    "inventory-search"
+  ]
+}
